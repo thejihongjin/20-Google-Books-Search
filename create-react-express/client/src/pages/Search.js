@@ -22,7 +22,6 @@ const Search = ({ searchResults, handleInputChange, handleFormSubmit, handleSave
                     </Form>
                 </Card.Body>
             </Card>
-            {/* // results */}
             <div>
                 <Card style={cardStyle}>
                     <Card.Body>

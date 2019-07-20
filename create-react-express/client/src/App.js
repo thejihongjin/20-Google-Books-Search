@@ -8,7 +8,6 @@ import API from "./utils/API"
 
 class App extends Component {
     state = {
-        // currentPage: "Home",
         searchQuery: "",
         searchResults: [],
         savedBooks: []
