@@ -16,6 +16,7 @@ class App extends Component {
 
     componentDidMount() {
         this.searchBooks("Harry Potter");
+        this.loadBooks();
     }
 
     searchBooks = query => {
@@ -49,7 +50,6 @@ class App extends Component {
     };
 
     handleSaveClick = book => {
-        // console.log("save", book);
         API.saveBook({
             title: book.title,
             authors: book.authors,
@@ -58,6 +58,12 @@ class App extends Component {
             link: book.link
         })
             .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }
+
+    loadBooks = () => {
+        API.getBooks()
+            .then(response => this.setState({ savedBooks: response.data }))
             .catch(error => console.log(error));
     }
 

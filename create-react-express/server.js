@@ -27,6 +27,16 @@ app.post("/api/books", (req, res) => {
       });
 });
 
+app.get("/api/books", (req, res) => {
+    db.Book.find({})
+        .then(dbBook => {
+            res.json(dbBook)
+        })
+        .catch(error => {
+            res.json(error);
+        });
+});
+
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {

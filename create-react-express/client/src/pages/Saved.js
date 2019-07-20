@@ -18,7 +18,7 @@ const Saved = ({ savedBooks, handleDeleteClick }) => {
                     <Card.Title>Saved Books</Card.Title>
                     {savedBooks.length ? (
                         savedBooks.map(book => (
-                            <Card style={cardStyle} key={book.searchId}>
+                            <Card style={cardStyle} key={book.__v}>
                                 <Card.Header></Card.Header>
                                 <Card.Body>
                                     <div className="float-right">
