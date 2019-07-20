@@ -16,15 +16,24 @@ if (process.env.NODE_ENV === "production") {
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-// Define API routes here
 app.post("/api/books", (req, res) => {
-    db.Book.create(req.body)
+    db.Book.updateOne(
+        { link: req.body.link },
+        {
+            $set: {
+                title: req.body.title,
+                authors: req.body.authors,
+                description: req.body.description,
+                image: req.body.image,
+                link: req.body.link
+            }
+        },
+        { upsert: true }
+    )
         .then(dbBook => {
             res.json(dbBook);
             console.log("saved book")
-        }).catch(error => {
-            res.json(error);
-        });
+        }).catch(error => res.json(error));
 });
 
 app.get("/api/books", (req, res) => {
@@ -34,7 +43,6 @@ app.get("/api/books", (req, res) => {
 });
 
 app.delete("/api/books/:id", (req, res) => {
-    // console.log(req.body);
     db.Book.deleteOne({ _id: req.params.id })
         .then(dbBook => res.json(dbBook))
         .catch(error => res.json(error));
