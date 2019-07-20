@@ -36,6 +36,18 @@ class App extends Component {
             .catch(error => console.log(error));
     }
 
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.searchBooks(this.state.searchQuery);
+    };
+
     render() {
         return (
             <div>
@@ -43,7 +55,7 @@ class App extends Component {
                     <Tab eventKey="home" title="Google Books" disabled />
                     <Tab eventKey="search" title="Search">
                         <Header />
-                        <Search searchResults={this.state.searchResults} />
+                        <Search searchResults={this.state.searchResults} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  />
                     </Tab>
                     <Tab eventKey="contact" title="Saved">
                         <Header />
