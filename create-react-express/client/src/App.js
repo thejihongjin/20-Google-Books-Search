@@ -57,7 +57,8 @@ class App extends Component {
             image: book.image,
             link: book.link
         })
-            .then(response => console.log(response))
+            // .then(response => console.log(response))
+            .then(() => this.loadBooks())
             .catch(error => console.log(error));
     }
 
@@ -67,12 +68,12 @@ class App extends Component {
             .catch(error => console.log(error));
     }
 
-    handleDeleteClick = () => {
-        // handleDeleteClick = bookId => {
-        console.log("delete");
-        // API.deleteBook(bookId)
-        //     .then(response => console.log(response))
-        //     .catch(error => console.log(error));
+    // handleDeleteClick = () => {
+    handleDeleteClick = bookId => {
+        // console.log("delete", bookId);
+        API.deleteBook(bookId)
+            .then(() => this.loadBooks())
+            .catch(error => console.log(error));
     }
 
     render() {

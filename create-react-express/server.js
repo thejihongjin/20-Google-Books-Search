@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+    app.use(express.static("client/build"));
 }
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
@@ -18,31 +18,34 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Define API routes here
 app.post("/api/books", (req, res) => {
-  db.Book.create(req.body)
-      .then(dbBook => {
-          res.json(dbBook);
-          console.log("saved book")
-      }).catch(error => {
-          res.json(error);
-      });
+    db.Book.create(req.body)
+        .then(dbBook => {
+            res.json(dbBook);
+            console.log("saved book")
+        }).catch(error => {
+            res.json(error);
+        });
 });
 
 app.get("/api/books", (req, res) => {
     db.Book.find({})
-        .then(dbBook => {
-            res.json(dbBook)
-        })
-        .catch(error => {
-            res.json(error);
-        });
+        .then(dbBook => res.json(dbBook))
+        .catch(error => res.json(error));
+});
+
+app.delete("/api/books/:id", (req, res) => {
+    // console.log(req.body);
+    db.Book.deleteOne({ _id: req.params.id })
+        .then(dbBook => res.json(dbBook))
+        .catch(error => res.json(error));
 });
 
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+    console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

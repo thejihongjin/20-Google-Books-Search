@@ -18,11 +18,11 @@ const Saved = ({ savedBooks, handleDeleteClick }) => {
                     <Card.Title>Saved Books</Card.Title>
                     {savedBooks.length ? (
                         savedBooks.map(book => (
-                            <Card style={cardStyle} key={book.__v}>
+                            <Card style={cardStyle} key={book._id}>
                                 <Card.Header></Card.Header>
                                 <Card.Body>
                                     <div className="float-right">
-                                        <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button onClick={handleDeleteClick}>Delete</Button>
+                                        <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button onClick={() => handleDeleteClick(book._id)}>Delete</Button>
                                     </div>
                                     <Card.Title>{book.title}</Card.Title>
                                     <Card.Text>By {book.authors}</Card.Text>
