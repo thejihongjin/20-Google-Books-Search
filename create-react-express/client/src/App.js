@@ -3,7 +3,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Header from "./components/Header";
 import Search from "./pages/Search";
-// import Saved from "./pages/Saved";
+import Saved from "./pages/Saved";
 
 class App extends Component {
     state = {
@@ -23,7 +23,7 @@ class App extends Component {
                     </Tab>
                     <Tab eventKey="contact" title="Saved">
                         <Header />
-                        {/* <Saved /> */}
+                        <Saved savedBooks={this.state.savedBooks} />
                     </Tab>
                 </Tabs>
             </div>
