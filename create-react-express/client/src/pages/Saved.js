@@ -10,7 +10,7 @@ const imgStyle = {
     paddingRight: "15px"
 }
 
-const Saved = ({ savedBooks }) => {
+const Saved = ({ savedBooks, handleDeleteClick }) => {
     return (
         <div>
             <Card style={cardStyle}>
@@ -22,7 +22,7 @@ const Saved = ({ savedBooks }) => {
                                 <Card.Header></Card.Header>
                                 <Card.Body>
                                     <div className="float-right">
-                                        <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button>Delete</Button>
+                                        <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button onClick={handleDeleteClick}>Delete</Button>
                                     </div>
                                     <Card.Title>{book.title}</Card.Title>
                                     <Card.Text>By {book.authors}</Card.Text>

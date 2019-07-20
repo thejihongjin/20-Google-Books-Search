@@ -7,7 +7,7 @@ const cardStyle = {
     margin: "25px"
 }
 
-const Search = ({ searchResults, handleInputChange, handleFormSubmit }) => {
+const Search = ({ searchResults, handleInputChange, handleFormSubmit, handleSaveClick }) => {
     return (
         <div style={{ margin: "0 auto" }}>
             <Card style={cardStyle}>
@@ -33,7 +33,7 @@ const Search = ({ searchResults, handleInputChange, handleFormSubmit }) => {
                                     <Card.Header></Card.Header>
                                     <Card.Body>
                                         <div className="float-right">
-                                            <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button>Save</Button>
+                                            <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button onClick={handleSaveClick}>Save</Button>
                                         </div>
                                         <Card.Title>{book.title}</Card.Title>
                                         <Card.Text>By {book.authors}</Card.Text>

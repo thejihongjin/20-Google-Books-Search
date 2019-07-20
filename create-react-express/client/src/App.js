@@ -8,7 +8,7 @@ import API from "./utils/API"
 
 class App extends Component {
     state = {
-        currentPage: "Home",
+        // currentPage: "Home",
         searchQuery: "",
         searchResults: [],
         savedBooks: []
@@ -48,6 +48,22 @@ class App extends Component {
         this.searchBooks(this.state.searchQuery);
     };
 
+    handleSaveClick = () => {
+    // handleSaveClick = book => {
+        console.log("save");
+        // API.saveBook(book)
+        //     .then(response => console.log(response))
+        //     .catch(error => console.log(error));
+    }
+
+    handleDeleteClick = () => {
+    // handleDeleteClick = bookId => {
+        console.log("delete");
+        // API.deleteBook(bookId)
+        //     .then(response => console.log(response))
+        //     .catch(error => console.log(error));
+    }
+
     render() {
         return (
             <div>
@@ -55,11 +71,11 @@ class App extends Component {
                     <Tab eventKey="home" title="Google Books" disabled />
                     <Tab eventKey="search" title="Search">
                         <Header />
-                        <Search searchResults={this.state.searchResults} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  />
+                        <Search searchResults={this.state.searchResults} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleSaveClick={this.handleSaveClick}  />
                     </Tab>
                     <Tab eventKey="contact" title="Saved">
                         <Header />
-                        <Saved savedBooks={this.state.savedBooks} />
+                        <Saved savedBooks={this.state.savedBooks} handleDeleteClick={this.handleDeleteClick} />
                     </Tab>
                 </Tabs>
             </div>
