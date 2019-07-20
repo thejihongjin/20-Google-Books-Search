@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import Header from "./components/Header";
+// import Search from "./pages/Search";
+// import Saved from "./pages/Saved";
 
 class App extends Component {
     render() {
@@ -9,10 +12,12 @@ class App extends Component {
                 <Tabs defaultActiveKey="search" transition={false} id="noanim-tab-example">
                     <Tab eventKey="home" title="Google Books" disabled />
                     <Tab eventKey="search" title="Search">
-                        search tab
+                        <Header />
+                        {/* <Search /> */}
                     </Tab>
                     <Tab eventKey="contact" title="Saved">
-                        saved tab
+                        <Header />
+                        {/* <Saved /> */}
                     </Tab>
                 </Tabs>
             </div>
