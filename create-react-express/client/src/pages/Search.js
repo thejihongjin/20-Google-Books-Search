@@ -33,7 +33,7 @@ const Search = ({ searchResults, handleInputChange, handleFormSubmit, handleSave
                                     <Card.Header></Card.Header>
                                     <Card.Body>
                                         <div className="float-right">
-                                            <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button onClick={handleSaveClick}>Save</Button>
+                                            <a href={book.link} target="_blank" rel="noopener noreferrer"><Button>View</Button></a> <Button onClick={() => handleSaveClick(book)}>Save</Button>
                                         </div>
                                         <Card.Title>{book.title}</Card.Title>
                                         <Card.Text>By {book.authors}</Card.Text>

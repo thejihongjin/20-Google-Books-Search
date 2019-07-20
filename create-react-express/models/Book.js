@@ -7,20 +7,16 @@ var BookSchema = new Schema({
         required: true
     },
     authors: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        default: "No description available."
+        type: String
     },
     image: {
-        type: String,
-        required: true
+        type: String
     },
     link: {
-        type: String,
-        required: true
+        type: String
     }
 });
 

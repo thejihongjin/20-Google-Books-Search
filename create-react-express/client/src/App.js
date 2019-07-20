@@ -48,16 +48,21 @@ class App extends Component {
         this.searchBooks(this.state.searchQuery);
     };
 
-    handleSaveClick = () => {
-    // handleSaveClick = book => {
-        console.log("save");
-        // API.saveBook(book)
-        //     .then(response => console.log(response))
-        //     .catch(error => console.log(error));
+    handleSaveClick = book => {
+        // console.log("save", book);
+        API.saveBook({
+            title: book.title,
+            authors: book.authors,
+            description: book.description,
+            image: book.image,
+            link: book.link
+        })
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
     }
 
     handleDeleteClick = () => {
-    // handleDeleteClick = bookId => {
+        // handleDeleteClick = bookId => {
         console.log("delete");
         // API.deleteBook(bookId)
         //     .then(response => console.log(response))
@@ -71,7 +76,7 @@ class App extends Component {
                     <Tab eventKey="home" title="Google Books" disabled />
                     <Tab eventKey="search" title="Search">
                         <Header />
-                        <Search searchResults={this.state.searchResults} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleSaveClick={this.handleSaveClick}  />
+                        <Search searchResults={this.state.searchResults} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleSaveClick={this.handleSaveClick} />
                     </Tab>
                     <Tab eventKey="contact" title="Saved">
                         <Header />
