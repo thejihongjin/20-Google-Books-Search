@@ -7,7 +7,7 @@ const cardStyle = {
     margin: "25px"
 }
 
-const Search = ({ searchResults, handleInputChange, handleFormSubmit, handleSaveClick }) => {
+const Search = ({ searchResults, searchQuery, handleInputChange, handleFormSubmit, handleSaveClick }) => {
     return (
         <div style={{ margin: "0 auto" }}>
             <Card style={cardStyle}>
@@ -16,7 +16,7 @@ const Search = ({ searchResults, handleInputChange, handleFormSubmit, handleSave
                     <Form>
                         <Form.Group controlId="formBookSearch">
                             <Form.Label>Book</Form.Label>
-                            <Form.Control type="text" placeholder="e.g., Harry Potter" name="searchQuery" onChange={handleInputChange} />
+                            <Form.Control type="text" placeholder="e.g., Harry Potter" name="searchQuery" value={searchQuery} onChange={handleInputChange} />
                         </Form.Group>
                         <Button className="float-right" onClick={handleFormSubmit}>Search</Button>
                     </Form>

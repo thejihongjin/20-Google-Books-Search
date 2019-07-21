@@ -38,14 +38,17 @@ class App extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
+        this.setState({ [name]: value }, () => { console.log(this.state) });
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchBooks(this.state.searchQuery);
+        if (this.state.searchQuery) {
+            this.searchBooks(this.state.searchQuery);
+            this.setState({ searchQuery: "" }, () => { console.log(this.state) });
+        } else {
+            alert("Please input search term first!");
+        }
     };
 
     handleSaveClick = book => {
@@ -79,7 +82,7 @@ class App extends Component {
                     <Tab eventKey="home" title="Google Books" disabled />
                     <Tab eventKey="search" title="Search">
                         <Header />
-                        <Search searchResults={this.state.searchResults} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleSaveClick={this.handleSaveClick} />
+                        <Search searchResults={this.state.searchResults} searchQuery={this.state.searchQuery} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleSaveClick={this.handleSaveClick} />
                     </Tab>
                     <Tab eventKey="contact" title="Saved">
                         <Header />
