@@ -59,7 +59,15 @@ class App extends Component {
             image: book.image,
             link: book.link
         })
-            .then(() => this.loadBooks())
+            .then(response => {
+                // console.log(JSON.parse(response.config.data).title);
+                if (response.data.upserted) {
+                    this.loadBooks();
+                    alert(JSON.parse(response.config.data).title + " saved!");
+                } else {
+                    alert("Book already saved.")
+                }
+            })
             .catch(error => console.log(error));
     }
 
